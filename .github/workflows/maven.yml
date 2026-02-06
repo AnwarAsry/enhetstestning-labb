@@ -27,8 +27,9 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+        
     - name: Build with Maven
-      run: mvn -B install -D skipTests --no-transfer-progress
+      run: mvn -B clean package -DskipTests --no-transfer-progress
     
     - name: Install Playwright browsers
       run: mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
