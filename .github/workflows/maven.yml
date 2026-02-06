@@ -33,6 +33,11 @@ jobs:
     - name: Install Playwright browsers
       run: mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
 
+    - name: Start Spring Boot app
+      run: |
+        nohup java -jar target/*.jar &
+        sleep 15
+
     - name: Run tests (JUnit + Playwright)
       run: mvn test
           
